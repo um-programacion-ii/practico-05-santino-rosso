@@ -3,16 +3,20 @@ import ar.edu.um.AlumnoDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AlumnoDaoTest {
     private AlumnoDao alumnoDao;
+    Alumno alumno;
 
     @BeforeEach
     public void setUp() {
         alumnoDao = new AlumnoDao();
         alumnoDao.crearAlumno(new Alumno(1, "Juan", "Perez"));
-        alumnoDao.crearAlumno(new Alumno(2, "Ana", "Gomez"));
+        this.alumno = new Alumno(2, "Ana", "Gomez");
+        alumnoDao.crearAlumno(alumno);
         alumnoDao.crearAlumno(new Alumno(3, "Carlos", "Rodriguez"));
     }
 
@@ -68,4 +72,16 @@ public class AlumnoDaoTest {
         });
     }
 
+    @Test
+    public void testLeerTodos() {
+        List<Alumno> result = alumnoDao.leerTodos();
+        assertEquals(3, result.size());
+        assertEquals(this.alumno,result.get(0));
+    }
 }
+
+
+
+
+
+

@@ -1,6 +1,8 @@
 package ar.edu.um;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class AlumnoDao {
@@ -35,5 +37,13 @@ public class AlumnoDao {
         if (leerAlumno(id) != null){
             alumnos.remove(leerAlumno(id));
         }
+    }
+
+    public List<Alumno> leerTodos(){
+        List<Alumno> listAlumnos = new ArrayList<>();
+        for (Alumno alumno : alumnos) {
+            listAlumnos.add(alumno);
+        }
+        return listAlumnos;
     }
 }
